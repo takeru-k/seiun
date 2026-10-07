@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>はじめてのHTML・CSS・JavaScript(体験授業)</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          "Hiragino Kaku Gothic ProN",
+          "Hiragino Sans",
+          "Yu Gothic Medium",
+          "Yu Gothic",
+          Meiryo,
+          -apple-system,
+          BlinkMacSystemFont,
+          sans-serif;
+        color: #2b2b2b;
+        background: #f7f6f2;
+        line-height: 1.85;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .lesson-wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 36px 20px 80px;
+      }
+
+      /* ページ上部 */
+
+      .lesson-title {
+        font-size: 1.7rem;
+        font-weight: 800;
+        color: #154d41;
+        margin-bottom: 36px;
+      }
+
+      /* 各STEP共通 */
+      .lesson-step {
+        margin-bottom: 44px;
+        padding-bottom: 36px;
+        border-bottom: 1px solid #e6e3db;
+      }
+      .lesson-step:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+      }
+      .step-badge {
+        display: inline-block;
+        background: #154d41;
+        color: #fff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 4px 12px;
+        border-radius: 20px;
+        margin-bottom: 12px;
+      }
+      .step-title {
+        font-size: 1.3rem;
+        color: #154d41;
+        margin-bottom: 14px;
+      }
+      .step-text {
+        font-size: 0.98rem;
+        margin-bottom: 14px;
+      }
+
+      /* STEP0 ゴール */
+      .goal-box {
+        background: #eef6f2;
+        border: 1px solid #cfe6da;
+        border-radius: 12px;
+        padding: 16px 20px;
+      }
+      .goal-label {
+        font-weight: 700;
+        color: #154d41;
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+      }
+      .goal-text {
+        font-size: 0.95rem;
+      }
+
+      /* ワーク共通 */
+      .practice-box {
+        background: #ffffff;
+        border: 1px solid #e6e3db;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-top: 16px;
+      }
+      .practice-label {
+        font-weight: 700;
+        color: #e8823c;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+      .practice-instruction {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+      }
+      .practice-preview {
+        background: #f7f6f2;
+        border: 1px dashed #cfcabf;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      /* STEP1 練習用のHTML */
+      /* ▼演習2: ここの値(色・背景色・文字サイズ)を書き換えてみよう */
+      .practice-heading {
+        font-size: 1.6rem;
+        color: #1f6f5c;
+        background: transparent;
+        margin-bottom: 10px;
+      }
+      .practice-paragraph {
+        font-size: 1rem;
+        color: #2b2b2b;
+      }
+      /* ▲演習2 ここまで */
+
+      /* STEP1 練習用のリンク */
+      .practice-link-row {
+        font-size: 0.95rem;
+        margin-bottom: 10px;
+      }
+      .practice-link-row:last-child {
+        margin-bottom: 0;
+      }
+      .practice-link {
+        color: #2f6fa8;
+      }
+
+      /* STEP1 練習用のリスト */
+      .practice-list {
+        padding-left: 1.3em;
+      }
+      /* ▼演習2-2: ここのborder-bottomの値を書き換えてみよう */
+      .practice-list-item {
+        padding: 8px 0;
+        border-bottom: 1px solid #cfcabf;
+      }
+      /* ▲演習2-2 ここまで */
+
+      /* STEP2 色見本 */
+      .color-reference {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .color-chip {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        background: #ffffff;
+        border: 1px solid #e6e3db;
+        border-radius: 20px;
+        padding: 4px 12px 4px 6px;
+      }
+      .color-swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+      .color-swatch-green {
+        background: #1f6f5c;
+      }
+      .color-swatch-orange {
+        background: #e8823c;
+      }
+      .color-swatch-pink {
+        background: #d1497a;
+      }
+      .color-swatch-blue {
+        background: #2f6fa8;
+      }
+      .color-swatch-yellow {
+        background: #d1a92a;
+      }
+
+      /* STEP3 ボタンとJS */
+      .practice-button {
+        background: #1f6f5c;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 22px;
+        font-size: 0.95rem;
+        cursor: pointer;
+      }
+      .practice-button:hover {
+        background: #154d41;
+      }
+      .practice-message {
+        margin-top: 14px;
+        font-size: 1rem;
+      }
+
+      /* STEP3 発展ワーク */
+      .bonus-box {
+        background: #f5f0fa;
+        border: 1px dashed #cbb8e0;
+        border-radius: 14px;
+        padding: 18px 20px;
+        margin-top: 16px;
+      }
+      .bonus-label {
+        font-weight: 700;
+        color: #7a4fa3;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+      .bonus-instruction {
+        font-size: 0.95rem;
+        margin-bottom: 16px;
+      }
+
+      /* STEP4 振り返り */
+      .reflection-box {
+        background: #fbf3ea;
+        border: 1px solid #f0d9bd;
+        border-radius: 12px;
+        padding: 18px 20px;
+      }
+      .reflection-label {
+        font-weight: 700;
+        color: #a85f22;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+      }
+      .reflection-textarea {
+        width: 100%;
+        min-height: 80px;
+        border: 1px solid #e6e3db;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 0.9rem;
+        font-family: inherit;
+        resize: vertical;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="lesson-wrap">
+      <p class="lesson-title">はじめてのHTML・CSS・JavaScript</p>
+
+      <!-- STEP 0: オリエンテーション -->
+      <section class="lesson-step">
+        <div class="step-badge">STEP 0 ・ 13分</div>
+        <h2 class="step-title">オリエンテーション</h2>
+        <p class="step-text">
+          わたしたちが見ているWebページは、3つの言語の組み合わせでできています。
+        </p>
+        <p class="step-text">
+          <strong>HTML</strong
+          >はページの骨組み(見出しや文章)、<strong>CSS</strong>はページの見た目(色や大きさ)、<strong>JavaScript</strong>はページの動き(クリックしたときの反応など)を担当しています。
+        </p>
+        <div class="goal-box">
+          <p class="goal-label">🎯 今日のゴール</p>
+          <p class="goal-text">
+            このページの文字や色を書き換えたり、ボタンを押すと動く仕組みを作ったりして、HTML・CSS・JavaScriptを実際に体験してみましょう。
+          </p>
+        </div>
+      </section>
+
+      <!-- STEP 1: HTML -->
+      <section class="lesson-step">
+        <div class="step-badge">STEP 1 ・ 13分</div>
+        <h2 class="step-title">HTMLで文章とリンクを書き換えてみよう</h2>
+        <p class="step-text">
+          HTMLは「タグ」という目印で文章の意味を表します。たとえば
+          <code>&lt;h1&gt;</code
+          >は大きな見出し、<code>&lt;p&gt;</code>は段落(ふつうの文章)を表すタグです。
+        </p>
+        <p class="step-text">
+          このページの下にある見本も、この2つのタグでできています。メモ帳でファイルを開き、コメント「演習1」を探してみましょう。
+        </p>
+        <div class="practice-box">
+          <p class="practice-label">✏️ ワーク①:文章を書き換える</p>
+          <p class="practice-instruction">
+            下の見出しと文章を、自分の名前や好きなことなど、自由な言葉に書き換えてみましょう。書き換えたらファイルを保存して、ブラウザを更新して確認します。
+          </p>
+          <div class="practice-preview">
+            <!-- ▼演習1: ここの見出しと文章を書き換えてみよう -->
+            <h1 class="practice-heading">わたしのはじめてのページ</h1>
+            <p class="practice-paragraph">
+              ここに自己紹介や好きなことを書いてみよう。
+            </p>
+            <!-- ▲演習1 ここまで -->
+          </div>
+        </div>
+        <p class="step-text" style="margin-top: 20px">
+          別のページに移動する仕組みは<code>&lt;a&gt;</code>タグで作ります。<code>href</code>という部分に「どこへ移動するか」を書きます。
+          <code>https://</code
+          >から始まる別サイトのアドレスを指定すると<strong>外部リンク</strong>になります。
+        </p>
+        <div class="practice-box">
+          <p class="practice-label">✏️ ワーク②:リンクを作る</p>
+          <p class="practice-instruction">
+            下のリンクの飛び先(<code>href</code>の中身)や、表示される文字を書き換えてみましょう。コメント「演習1-2」を探してみましょう。
+          </p>
+          <div class="practice-preview">
+            <!-- ▼演習1-2: リンクの飛び先(href)や文字を書き換えてみよう -->
+            <p class="practice-link-row">
+              🔗 外部リンク:
+              <a
+                class="practice-link"
+                href="https://www2.iwate-ed.jp/hkb-h/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >外部リンクを開く</a
+              >
+            </p>
+            <!-- ▲演習1-2 ここまで -->
+          </div>
+        </div>
+        <p class="step-text" style="margin-top: 20px">
+          複数の項目をまとめて並べたいときは、<code>&lt;ul&gt;</code>タグの中に<code>&lt;li&gt;</code>(リストの項目)を並べて書きます。
+        </p>
+        <div class="practice-box">
+          <p class="practice-label">✏️ ワーク③:リストを作る</p>
+          <p class="practice-instruction">
+            下のリストの項目を、自分の好きなものに書き換えたり、新しい項目を1つ増やしたりしてみましょう。コメント「演習1-3」を探してみましょう。
+          </p>
+          <div class="practice-preview">
+            <!-- ▼演習1-3: ここのリストの項目を書き換えたり増やしたりしてみよう -->
+            <ul class="practice-list">
+              <li class="practice-list-item">好きな教科:美術</li>
+              <li class="practice-list-item">好きな食べ物:ラーメン</li>
+              <li class="practice-list-item">好きな音楽:J-POP</li>
+            </ul>
+            <!-- ▲演習1-3 ここまで -->
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 2: CSS -->
+      <section class="lesson-step">
+        <div class="step-badge">STEP 2 ・ 12分</div>
+        <h2 class="step-title">CSSで見た目を変えてみよう</h2>
+        <p class="step-text">
+          CSSは「どの部分を」「どのように装飾するか」をセットで書きます。ファイル上部の<code>&lt;style&gt;</code>タグの中に、コメント「演習2」があります。
+        </p>
+        <p class="step-text">
+          そこに書かれている<code>color</code>(文字色)、<code>background</code>(背景色)、<code>font-size</code>(文字の大きさ)の値を、下の色見本や好きな数値に書き換えてみましょう。
+        </p>
+        <div class="color-reference">
+          <span class="color-chip"
+            ><span class="color-swatch color-swatch-green"></span>#1f6f5c</span
+          >
+          <span class="color-chip"
+            ><span class="color-swatch color-swatch-orange"></span>#e8823c</span
+          >
+          <span class="color-chip"
+            ><span class="color-swatch color-swatch-pink"></span>#d1497a</span
+          >
+          <span class="color-chip"
+            ><span class="color-swatch color-swatch-blue"></span>#2f6fa8</span
+          >
+          <span class="color-chip"
+            ><span class="color-swatch color-swatch-yellow"></span>#d1a92a</span
+          >
+        </div>
+        <div class="practice-box">
+          <p class="practice-label">
+            ✏️ ワーク①:文字色・背景色・文字サイズを変える
+          </p>
+          <p class="practice-instruction">
+            STEP1の見出し(<code>.practice-heading</code>)や文章(<code>.practice-paragraph</code>)のCSSを書き換えて、見た目を変えてみましょう。文字サイズは<code>1.5rem</code>や<code>2rem</code>のように書きます。
+          </p>
+          <p class="practice-instruction" style="margin-bottom: 0">
+            <code>.practice-heading</code
+            >の中にある「演習2」のコメントを探して、そのすぐ下の値を書き換えてみてください。
+          </p>
+        </div>
+        <p class="step-text" style="margin-top: 20px">
+          項目と項目の間に線を引きたいときは<code>border-bottom</code>(下側の線)を使います。<code
+            >太さ 線の種類 色</code
+          >の順に書き、たとえば<code>2px solid #e8823c</code
+          >と書くとオレンジ色の線が引けます。
+        </p>
+        <div class="practice-box">
+          <p class="practice-label">✏️ ワーク②:リストに区切り線をつける</p>
+          <p class="practice-instruction">
+            STEP1で作ったリストの項目(<code>.practice-list-item</code>)の<code>border-bottom</code>の太さ・種類・色を書き換えて、見た目を変えてみましょう。
+          </p>
+          <p class="practice-instruction" style="margin-bottom: 0">
+            <code>.practice-list-item</code
+            >の中にある「演習2-2」のコメントを探して、そのすぐ下の値を書き換えてみてください。
+          </p>
+        </div>
+      </section>
+
+      <!-- STEP 3: JavaScript -->
+      <section class="lesson-step">
+        <div class="step-badge">STEP 3 ・ 16分</div>
+        <h2 class="step-title">JavaScriptで動きをつけてみよう</h2>
+        <p class="step-text">
+          JavaScriptはファイルの最後にある<code>&lt;script&gt;</code>タグの中に書きます。「ボタンを押す」のような操作のことを<strong>イベント</strong>と呼び、イベントが起きたときに実行する処理を書くことができます。
+        </p>
+        <p class="step-text">
+          下のボタンは、押すとメッセージが変わるように作られています。コメント「演習3」を探して、表示される文字や色を書き換えてみましょう。
+        </p>
+        <div class="practice-box">
+          <p class="practice-label">✏️ ワーク</p>
+          <p class="practice-instruction">
+            ボタンを押したときに表示される文字を、自分の好きなメッセージに変えてみましょう。慣れてきたら文字の色も変えてみましょう。
+          </p>
+          <div class="practice-preview">
+            <button class="practice-button" id="practice-button">
+              押してみよう
+            </button>
+            <p class="practice-message" id="practice-message">
+              まだ何も起きていません
+            </p>
+          </div>
+        </div>
+        <div class="bonus-box">
+          <p class="bonus-label">🌟 発展:時間が余ったら挑戦しよう</p>
+          <p class="bonus-instruction">
+            下のボタンは、押した回数を数えて表示します。コメント「発展1」を探して、表示される文字や、1回に増える数を書き換えてみましょう。
+          </p>
+          <div class="practice-preview">
+            <button class="practice-button" id="counter-button">
+              カウントする
+            </button>
+            <p class="practice-message" id="counter-message">まだ0回です</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- STEP 4: 振り返り -->
+      <section class="lesson-step">
+        <div class="step-badge">STEP 4 ・ 3分</div>
+        <h2 class="step-title">振り返り</h2>
+        <p class="step-text">
+          発表はしません。今日書き換えた場所や、難しかったところを自分の言葉で一言メモしておきましょう。
+        </p>
+        <div class="reflection-box">
+          <p class="reflection-label">📝 メモ</p>
+          <textarea
+            class="reflection-textarea"
+            placeholder="例:見出しの色を変えるのは簡単だったけど、JavaScriptの場所を見つけるのが難しかった。"
+          ></textarea>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        "use strict";
+
+        document
+          .getElementById("practice-button")
+          .addEventListener("click", function () {
+            // ▼演習3: ここのメッセージと色を書き換えてみよう
+            var message = document.getElementById("practice-message");
+            message.textContent = "ボタンが押されました!";
+            message.style.color = "#e8823c";
+            // ▲演習3 ここまで
+          });
+
+        var count = 0;
+        document
+          .getElementById("counter-button")
+          .addEventListener("click", function () {
+            // ▼発展1: ここの増える数とメッセージを書き換えてみよう
+            count = count + 1;
+            document.getElementById("counter-message").textContent =
+              count + "回押されました";
+            // ▲発展1 ここまで
+          });
+      })();
+    </script>
+  </body>
+</html>
